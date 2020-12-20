@@ -1,0 +1,160 @@
+.user-list{
+  &__headWrapper{
+    margin-bottom: 45px;
+    background-color: #DEDEDE;
+    padding: 15px 0;
+  }
+  &__breadcrumb{
+    color: #8E44AD;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  &__newUserWrapper{
+    display: flex;
+    h3{
+      font-size: 30px;
+      line-height: 35px;
+    }
+    button{
+      margin-left: auto;
+      background-color: #8E44AD;
+      padding: 7 45px;
+      border: 1px solid  #8E44AD;
+      border-radius: 20px;
+      i{
+        padding-right: 10px;
+      }
+      &:hover,&:focus,&:visited{
+        background-color: #642f7a;
+        border-color:#642f7a ;
+        box-shadow: none;
+      }
+    }
+
+  }
+  &__bodyWrapper{
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,.2);
+  }
+  &__card{
+    padding: 0px 15px;
+
+  }
+  &__cardBordered{
+    border-bottom: 1px solid #DEDEDE;
+    padding: 10px 0;
+  }
+  &__cardWrapper{
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    border: 1px solid transparent;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all .3s ease-in-out ;
+    &:hover{
+      background-color: #8E44AD;
+      border: 1px solid  #8E44AD;
+      border-radius: 5px;
+      .user-list__cardData p{
+        color: #fff;
+      }
+      img{
+        border: 2px solid #fff;
+      }
+      .user-list__arrow{
+        color: #fff;
+      }
+    }
+  }
+  &__cardData{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    img{
+      width: 53px;
+      height: 53px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    p{
+      color: #34495E;
+      font-size: 15px;
+      line-height: 18px;
+      margin-bottom: 0px;
+    }
+  }
+  &__actions{
+    margin-left: auto;
+  }
+  &__btns{
+    border: 1px solid #8E44AD;
+    padding: 10px;
+    color: #8E44AD;
+    border-radius: 5px;
+  }
+  &__edit{
+    margin-right: 15px;
+  }
+  &__delete{
+    margin-right: 40px;
+  }
+  &__arrow{
+    margin-right: 15px;
+    border: none;
+  }
+}
+
+
+
+
+
+.modal.show{
+  display: block;
+}
+
+.modal-dialog{
+  position: relative;
+  margin: 9.75rem auto;
+  max-width: 300px!important;
+  .modal-img{
+    width: 106px;
+    height: 106px;
+    margin: 0 auto;
+    position: absolute;
+    top: -53px;
+    left: 97px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+  }
+  .login-wrapper__form{
+    margin-top: 55px;
+    label{
+      color: #7F8C8D;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .form-control:focus{
+      border-color: #8E44AD;
+      box-shadow: none;
+    }
+  }
+}
+.modal-btns{
+display: flex;
+.btn{
+  padding: 7px 45px;
+  border-radius: 20px;
+  border: 1px solid #8E44AD ;
+  margin-right: 10px;
+  &:last-child{
+    margin-right: 0px;
+  }
+}
+.modal-save{
+  background-color: #8E44AD;
+}
+.modal-cancel{
+  color: #8E44AD;
+}
+}

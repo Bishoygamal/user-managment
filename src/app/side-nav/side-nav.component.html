@@ -1,0 +1,57 @@
+
+ <div class="sidebar-wrapper"  *ngIf ='sideNavOpened'>
+  <ng-sidebar-container>
+    <ng-sidebar [opened]="sideNavOpened"  position="right">
+      <div class="sidenav__wrapper">
+        <span class="sidenav__close"><i class="fas fa-times"></i></span>
+        <div class="sidenav__dataWrapper">
+          <img  src={{singleUser.data.avatar}} />
+          <p>{{singleUser.data.first_name}} {{singleUser.data.last_name}}</p>
+          <div class="sidenav__actions">
+            <button class="sidenav__edit" data-toggle="modal" data-target="#myModal"  ><i class="far fa-edit"></i> Edit</button>
+            <button class="sidenav__delete" (click)="deleteUser(singleUser.data.id)"> <i class="fas fa-trash"></i> Delete</button>
+          </div>
+        </div>
+      </div>
+
+    </ng-sidebar>
+  </ng-sidebar-container>
+</div>
+
+ <!--Edit Modal-->
+
+ <div id="myModal" class="modal fade" role="dialog" [ngClass]="{'show':showModal}">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <div class="login-wrapper__form">
+          <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+            <div class="form-group">
+              <label for="username">User Name</label>
+              <input type="text" class="form-control" formControlName="username" id="username" value={{singleUser.data.first_name}} >
+
+            </div>
+            <div class="form-group">
+              <label for="email">email</label>
+              <input type="email" class="form-control" formControlName="email" id="email" value={{singleUser.data.email}}>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- End Modal-->
