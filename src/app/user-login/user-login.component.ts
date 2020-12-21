@@ -35,9 +35,6 @@ export class UserLoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
-
-
     this.authenticationService.login(this.f.email.value, this.f.password.value)
         .pipe(first())
         .subscribe(

@@ -9,6 +9,8 @@ import { UserListComponent } from './user-list/user-list.component';
 import {SidebarModule} from 'ng-sidebar';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ToastrModule } from 'ng6-toastr-notifications';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     UserLoginComponent,
     UserListComponent,
     SideNavComponent,
-    NavbarComponent
+    NavbarComponent,
+
 
   ],
   imports: [
@@ -26,6 +29,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     ReactiveFormsModule,
     HttpClientModule,
     SidebarModule.forRoot(),
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
 
 
   ],

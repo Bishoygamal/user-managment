@@ -12,9 +12,9 @@
 
 
   <div class="container">
-  <app-side-nav [currentUsers]="users" (outPutIdtoParent)="getIdfromDeleted($event)" [id]="userId"  [sideNavOpened]="opened"></app-side-nav>
+<div class="user-list__viewWrapper">
   <div class="user-list__bodyWrapper"   >
-    <div class="user-list__card" *ngFor="let user of users.data" (click)="toggleSidebar(user.id)" >
+    <div class="user-list__card" *ngFor="let user of users.data" (click)="toggleSidebar(user.id,user.first_name,user.last_name,user.avatar)" >
 
       <div class="user-list__cardBordered">
         <div class="user-list__cardWrapper">
@@ -31,7 +31,12 @@
       </div>
 
     </div>
+
   </div>
+  <app-side-nav [currentUsers]="users" (outPutIdtoParent)="getIdfromDeleted($event)" [id]="userId" [firstName]="firstName" [lastName]="lastName" [avatar]="avatar"  [sideNavOpened]="opened"></app-side-nav>
+</div>
+
+
 </div>
 
 

@@ -1,11 +1,11 @@
 import { Component, Input, OnInit,ViewChild } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../models/user';
 import { UsersService } from '../services/users.service';
 import { AuthenticateService } from '../services/authenticate.service';
-
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-user-list',
@@ -29,20 +29,27 @@ export class UserListComponent implements OnInit {
     private authenticationService: AuthenticateService,
     private userService: UsersService,
     private formBuilder: FormBuilder,
+    public toastr: ToastrManager,
+    private router: Router,
   ) {
     this.currentUser = this.authenticationService.currentUserValue;
+
    }
 
 
-   toggleSidebar(userId){
+   toggleSidebar(userId,firstName,lastName,avatar){
      this.opened = !this.opened;
      this.userId=userId;
+     this.firstName=firstName;
+     this.lastName=lastName;
+     this.avatar=avatar;
 
    }
 
   ngOnInit() {
     this.loadAllUsers();
-    console.log(this.users)
+    console.log(this.currentUser)
+
     this.newUserForm = this.formBuilder.group({
       name: [''],
       job:['']
@@ -52,25 +59,18 @@ export class UserListComponent implements OnInit {
 
   get f() { return this.newUserForm.controls; }
   onSubmitNewUser() {
-    console.log(this.f.name.value)
-    console.log(this.f.job.value)
 
-    // this.userService.addUser( this.f.username.value,this.f.job.value).subscribe(
-    //   (res) => {
-    //     console.log(res)
-    //   }, (err) => {
-    //     console.log(err);
-    //   }
-    //);
     this.userService.addUser(this.f.name.value, this.f.job.value)
     .pipe(first())
     .subscribe(
         data => {
             console.log(data)
             const newUser={
+              id:data.id,
               first_name:this.f.name.value,
               avatar:'../../assets/avatar.png'
             }
+            this.toastr.successToastr( this.f.name.value+' had been added', 'Success!');
             this.users['data'].push(newUser)
             this.closebutton.nativeElement.click();
 
